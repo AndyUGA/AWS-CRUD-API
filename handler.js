@@ -1,12 +1,18 @@
 'use strict';
 const AWS = require('aws-sdk');
 const db = new AWS.DynamoDB.DocumentClient({ apiVersion: '2012-08-10' });
-const { v4:uuid } = require('uuid');
+const { v4: uuid } = require('uuid');
 
 const postsTable = process.env.POSTS_TABLE;
 // Create a response
 function response(statusCode, message) {
   return {
+    headers: {
+      "Access-Control-Allow-Headers": "Content-Type",
+      "Access-Control-Allow-Origin": "*",
+      "Access-Control-Allow-Methods": "OPTIONS,POST,GET",
+      'Access-Control-Allow-Credentials': true,
+    },
     statusCode: statusCode,
     body: JSON.stringify(message)
   };

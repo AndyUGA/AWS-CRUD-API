@@ -40,6 +40,7 @@ functions:
     - http:
         path: /posts/{number}
         method: get
+        cors: true
   getPost:
     handler: handler.getPost
     events:
