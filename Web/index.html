@@ -12,6 +12,10 @@
         This will list all of the posts from DynamoDB
     </div>
 
+    <div id = "data">
+
+    </div>
+
 
 </body>
 </html>
@@ -39,6 +43,16 @@
 getData('https://7ieq42m7yg.execute-api.us-east-1.amazonaws.com/dev/posts')
   .then(data => {
     console.log(data); // JSON data parsed by `data.json()` call
+
+    let currentData = "<br>";
+    data.map((res) => {
+      let currentPost = res.title;
+
+      currentData += `${currentPost} <br>`;
+    });
+
+    document.getElementById("data").innerHTML = currentData;
+    
   });
 
 </script>
